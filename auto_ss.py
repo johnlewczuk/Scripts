@@ -31,10 +31,13 @@ if __name__ == '__main__':
         # can't use colon in windows filename
         png_name = os.path.join(save_path, f"{curr_time.hour}.{str(curr_time.minute).zfill(2)}.png")
         if(lower_time_bound <= curr_time <= upper_time_bound and curr_day.weekday() <= 4):
-            if not os.path.exists(save_path):
-                os.makedirs(save_path)
-
-            pyautogui.screenshot(png_name)
+            try:
+                if not os.path.exists(save_path):
+                    os.makedirs(save_path)
+                pyautogui.screenshot(png_name)
+                
+            except:
+                pass
             time.sleep(60)
             
 
